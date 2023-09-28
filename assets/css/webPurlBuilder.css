@@ -1,0 +1,130 @@
+:root{
+    --lblDisplay:none;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+body{
+    width: 80%;
+    margin: 0 auto;
+}
+#inputForm{
+    width: 100%;
+    margin-top: 100px;
+}
+#utmFields_insert{
+    width: 100%;
+}
+.inputFormWrapper,#utmFields{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.purlInput_key,.purlInput_url,.purlInput_value{
+    height: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    border:1px solid grey
+}
+.purlInput_url{
+    width: 98%;
+    min-width: 280px;
+    margin-bottom: 15px;
+}
+.purlInput_key{
+    width:15%;
+    min-width: 90px;
+}
+.purlInput_value{
+    width: 78%;
+    min-width: 180px;
+}
+.purlInput_label{
+    display: none;
+    color:grey;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 0.8em;
+    font-style: italic;
+}
+.wrapper_inputSelect{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.inputWrapper{
+    opacity:0;
+    transition-duration: 0.5s;
+    width: 80%;
+    height:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    visibility: hidden;
+}
+
+.inputChk:checked ~ .inputWrapper{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.inputChk {
+    position: absolute;
+    left: -100vw; /* don't hide the input but move it out of view instead for better accessibility   */
+}
+
+.chk_label {
+    padding: 8px;
+    border: 2px solid blue;
+    background-color: transparent;
+    border-radius: 5px;
+    color: blue;
+    display: inline-block;
+    position: relative;
+    width:15%;
+    font-size: 0.9em;
+    text-align: center;
+    
+}
+
+.inputChk:checked ~ .inputWrapper .purlInput_key:placeholder-shown,
+.inputChk:checked ~ .inputWrapper .purlInput_value:placeholder-shown{
+    box-shadow: inset 1px 0px 6px 3px rgba(255, 0, 0, 0.2);
+}
+
+
+.chk_label:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.inputChk:checked + 
+.chk_label {
+    background-color: blue;
+    color: #fff;
+}
+.chk_labelTick{
+    display: none;
+    width: 16px;
+    height: 16px;
+    padding: 4px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #059f00;
+    content: "✔";
+    font-size: 12px;
+    color: #fff;
+    position: absolute;
+    top: -16px;
+    right: -16px;
+}
+

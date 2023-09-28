@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/webPurlBuilder.css">
+</head>
+<body>
+    <form id="inputForm" action="">
+        <div class="inputFormWrapper">
+            <label 
+                for="input_baseURL" 
+                class="purlInput_label">Base URL</label>
+            <input 
+                type="text" 
+                name="" 
+                id="input_baseURL" 
+                class="purlInput_url" 
+                required 
+                placeholder="Base URL - eg: parachutedigitalmarketing.com.au">
+            <label 
+                for="input_path" 
+                class="purlInput_label">Path</label>
+            <input 
+                type="text" 
+                name="" 
+                id="input_path" 
+                class="purlInput_url" 
+                required 
+                placeholder="Path - eg: why-choose-parachute-digital/our-team">
+            <div id="utmFields_insert"></div>
+    </form>
+
+    <script src="./assets/js/generate.js"></script>
+    <script src="./assets/js/webPurlBuilder.js"></script>
+    <script src="./assets/js/addCustom.js"></script>
+</body>
+</html>

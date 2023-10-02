@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/webPurlBuilder.css">
+    <link rel="stylesheet" href="./assets/css/pdButton_select.css">
+    <link rel="stylesheet" href="./assets/css/pdButton_confirm.css">
 </head>
 <body>
+    <div id="purlWrapper">
+        <h2 id="purl">Test</h2>
+
+        <div class="confirmBtn_wrapper">
+            <button class="pd_btn-confirm" id="btn_confirm" onclick="validate()">
+                <span>Generate</span>
+            </button>
+        </div>
+        <div id="errorList"></div>
+
+    
+    </div>
     <form id="inputForm" action="">
         <div class="inputFormWrapper">
             <label 
@@ -18,6 +32,7 @@
                 id="input_baseURL" 
                 class="purlInput_url" 
                 required 
+                data-field="Base URL"
                 placeholder="Base URL - eg: parachutedigitalmarketing.com.au">
             <label 
                 for="input_path" 
@@ -28,6 +43,8 @@
                 id="input_path" 
                 class="purlInput_url" 
                 required 
+                
+                data-field="Path"
                 placeholder="Path - eg: why-choose-parachute-digital/our-team">
             <div id="utmFields_insert"></div>
     </form>
@@ -35,5 +52,7 @@
     <script src="./assets/js/generate.js"></script>
     <script src="./assets/js/webPurlBuilder.js"></script>
     <script src="./assets/js/addCustom.js"></script>
+    <script src="./assets/js/build.js"></script>
+    <script src="./assets/js/whiteSpace.js"></script>
 </body>
 </html>

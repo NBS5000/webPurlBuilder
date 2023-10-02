@@ -1,66 +1,79 @@
+/** 
+ * TODO: Add whitespace checker and handling
+ * TODO: add remove new custom when unchecked if there is a another not empty
+ */
 
-function addCustom(prevId){
-    console.log("Is that C3P0?")
-    console.log(prevId);
-
-    const prev = document.getElementById(prevId);
-    const parent = prev.parentElement;
-    const rand = Math.round(Math.random()*10000);
-    console.log(rand);
-
-
-
-
-const str = 
-    `<div id="custom_${rand}_wrapper" class="wrapper_inputSelect">
+/** @random creates random value for use on multiple custom fields */
+const rand = (function(){return Math.round(Math.random()*10000)});
+/** 
+ * @newString creates the string to be used for new custom section 
+ * @r = the random number
+ * @p = the previous element 
+ **/
+function newHtml(r,p){
+    const str = 
+    `<div id="custom_${r}_wrapper" class="wrapper_inputSelect">
         <input 
             class="inputChk" 
             type="checkbox" 
-            id='chk_custom_${rand}'
-            data-utm="custom">
+            id='chk_custom_${r}'
+            data-utm="custom_${r}"
+            data-prev="${p}">
         <label 
             class="chk_label" 
-            for='chk_custom_${rand}'>
+            for='chk_custom_${r}'>
             Custom<span class="chk_labelTick">✔</span>
         </label>
-        <div id="inputWrapper_custom_${rand}" class="inputWrapper">
-            <label for="input_custom_${rand}" class="purlInput_label">Custom</label>
+        <div id="inputWrapper_custom_${r}" class="inputWrapper">
+            <label for="input_custom_${r}" class="purlInput_label">Custom</label>
             <input 
                 type="text" 
                 name="" 
-                id="input_custom_${rand}" 
+                id="input_custom_${r}" 
                 class="purlInput_key" 
                 placeholder="Custom" 
-                value="custom_${rand}">
+                value="custom_${r}">
             <input 
                 type="text" 
                 name="" 
-                id="input_custom_${rand}_value" 
+                id="input_custom_${r}_value" 
                 class="purlInput_value" 
-                placeholder="Custom">
+                placeholder="Custom_${r}">
         </div>
     </div>
     `;
+    return str;
+}
+function addCustom(prevId){
+    /** @previousId is the id of the button clicked */
+    const r = rand();
+    const prev = document.getElementById(prevId);
+    const parent = prev.parentElement;
+    const str = newHtml(r,prevId);
+    /** adds the new HTML section to the DOM next to the clicked element*/
     parent.insertAdjacentHTML( 'beforeend', str );
-
-    const newSection = document.getElementById(`chk_custom_${rand}`);
-    
-
-    newSection.addEventListener("blur",(event)=>{
-        console.log("Hello there")
+    /** gets the new elements that have just been inserted */
+    const newSection = document.getElementById(`chk_custom_${r}`);
+    const newInput = document.getElementById(`input_custom_${r}_value`);
+    /** adds relevent event listeners */
+    newSection.addEventListener("change", (event) => {
+        /* get utm type from data attribute in the chkbox */
+        const utm = event.target.dataset.utm;
+        if(!event.target.checked){
+            document.getElementById(`input_${utm}`).value = utm;
+            document.getElementById(`input_${utm}_value`).value = "";
+        }
+    });
+    newInput.addEventListener("blur",(event)=>{
         const parent = event.target.parentElement;
-        const grandParent = parent;//document.getElementById(parent.id).parentElement;
+        const grandParent = document.getElementById(parent.id).parentElement;
         const chkLabel = document.querySelector("#"+grandParent.id + " > .chk_label");
         const chkBox = document.querySelector("#"+grandParent.id + " > .inputChk");
         const inputKey = document.querySelector("#"+grandParent.id + " > .inputWrapper > .purlInput_key");
         const inputVal = document.querySelector("#"+grandParent.id + " > .inputWrapper > .purlInput_value");
         const tick = document.querySelector("#"+grandParent.id + " > .chk_label > .chk_labelTick");
-        
-        console.log(grandParent)
-        return
         /** check if section has been selected first */
         if(chkBox.checked){
-            console.log("Is that you Artoo?")
             const keyVal = inputKey.value;
             const valVal = inputVal.value;
             /** run validation */
@@ -80,24 +93,12 @@ const str =
                  * tests subsequently fail 
                  * validation
                  */
-                console.log("Beep boop");
                 tick.style.display = "block";
                 /** if the utm was custom, add another custom option */
                 if(grandParent.id.includes("custom")){
-                    console.log("Who's that with you?")
                     addCustom(grandParent.id)
                 }
             };
         };
-    });
-
-
-
-
-    newSection.addEventListener("change", (event) => {
-        if(!event.target.checked){
-            document.getElementById(`input_custom_${rand}`).value = `custom_${rand}`;
-            document.getElementById(`input_custom_${rand}_value`).value = "";
-        }
     });
 }

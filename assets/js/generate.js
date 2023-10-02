@@ -1,4 +1,5 @@
-/** @generates the input options and related fields 
+/** 
+ * @generates the input options and related fields 
  * this will run on page load
 */
 
@@ -61,7 +62,8 @@ for (let i = 0; i < fields.length; i++) {
             data-utm="${lower}">
         <label 
             class="chk_label" 
-            for='chk_${lower}'>
+            for='chk_${lower}'
+            data-utm="${el}">
             ${el}<span class="chk_labelTick">✔</span>
         </label>
         <div id="inputWrapper_${lower}" class="inputWrapper">

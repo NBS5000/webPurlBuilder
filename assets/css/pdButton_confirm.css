@@ -1,0 +1,96 @@
+/*
+  ! To use this button:
+
+  ! *1* Add the following HTML
+  ======================
+  <div class="confirmBtn_wrapper">
+      <button class="pd_btn-confirm" id="btn_confirm">
+          <span>Generate</span>
+      </button>
+  </div>
+  ========================
+
+  ! *2* Add the following stylesheet snippet 
+  to the HEAD of the page, after the other 
+  stylesheets
+  ========================
+  <link rel="stylesheet" href="./assets/css/pdButton_confirm.css">
+  ========================
+
+  ! *3* Adjust css and html as required
+*/
+
+
+:root{
+  --btn_primaryColor: blue;
+  --btn_secondaryColor: white;
+  --btn_borderWidth: 2px;
+}
+.pd_btn-confirm {
+  height: 40px;
+  color: var(--btn_secondaryColor);;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: bold;
+  font-size: 1.2em;
+  outline: none;
+  width: 200px;
+  background-color: var(--btn_primaryColor);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  margin-top: 20px;
+}
+.pd_btn-confirm span {
+  position: relative;
+  display: block;
+}
+.pd_btn-confirm:before,
+.pd_btn-confirm:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: -1;
+  background: var(--btn_primaryColor);
+  transition: all 0.4s ease;
+  border-radius: 10px;
+}
+.pd_btn-confirm:before {
+  height: 0%;
+  width: var(--btn_borderWidth);
+}
+.pd_btn-confirm:after {
+  width: 0%;
+  height: var(--btn_borderWidth);
+}
+.pd_btn-confirm:hover:before,
+.pd_btn-confirm span:hover:before,
+.pd_btn-confirm span  {
+  height: 100%;
+}
+.pd_btn-confirm:hover:after,
+.pd_btn-confirm span:hover:after,
+.pd_btn-confirm span  {
+  width: 100%;
+}
+.pd_btn-confirm:hover {
+  background: transparent;
+}
+.pd_btn-confirm span:hover {
+  color: var(--btn_primaryColor);
+}
+.pd_btn-confirm span:before,
+.pd_btn-confirm span:after{
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: var(--btn_primaryColor);
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  width: var(--btn_borderWidth);
+  height: 0%;
+}

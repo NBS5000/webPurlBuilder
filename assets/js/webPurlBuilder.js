@@ -1,6 +1,6 @@
 /** @onblur : add onblur listener to all input fields ***/
-/** function within onblur is to validate fields and 
- * mark that the data is acceptable
+/** function within onblur is to validate fields and mark that the 
+ * data is acceptable.
  * This runs on page load AFTER the generate script
  */
 const inputFields = document.querySelectorAll(".inputWrapper > input");
@@ -49,8 +49,9 @@ for (let i = 0; i < inputFields.length; i++) {
         };
     });
 }
-
-/** @clears adds a function that if an option is unchecked, clear the values from its fields */
+/** 
+ *  @clears adds a function that if an option is unchecked, clear the values from 
+ * its fields */
 for (let i = 0; i < selectBtns.length; i++) {
     const el = selectBtns[i];
     el.addEventListener("change", (event) => {
@@ -59,6 +60,7 @@ for (let i = 0; i < selectBtns.length; i++) {
         if(!event.target.checked){
             document.getElementById(`input_${utm}`).value = utm;
             document.getElementById(`input_${utm}_value`).value = "";
+            document.querySelector(`#${utm}_wrapper .chk_labelTick`).style.display = "none";
         }
     });
 }

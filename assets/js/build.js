@@ -1,4 +1,5 @@
 function validate(){
+    document.getElementById("purl").innerText = "";
     let errors=[];
     let values=[""];
     const urls = document.getElementsByClassName("purlInput_url");

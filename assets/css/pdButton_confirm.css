@@ -42,7 +42,7 @@
   line-height: 42px;
   padding: 0;
   border: none;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 .pd_btn-confirm span {
   position: relative;

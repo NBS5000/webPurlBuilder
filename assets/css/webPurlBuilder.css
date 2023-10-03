@@ -148,3 +148,15 @@ body{
     font-style: italic;
     font-size: 0.9em;
 }
+
+/********************************/
+.confirmBtn_wrapper{
+    display: flex;
+    align-items: center;
+}
+#iconButton{
+    height:45px;
+    width: 45px;
+    margin-left: 20px;
+    display: none;
+}

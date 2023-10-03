@@ -13,6 +13,7 @@ const fields = [
     "Campaign",
     "Term",
     "Content",
+    "ID",
     "First Name",
     "Last Name",
     "Email",
@@ -25,12 +26,15 @@ const fields = [
  * and looping through the above array to build the necessary fields.
  * ! DO NOT AMEND THIS SECTION WITHOUT COMPLETE UNDERSTANDING
  */
+/*
+
+*/
 let htmlStr=`<div id="utmFields">`;
 for (let i = 0; i < fields.length; i++) {
     const el = fields[i];
     let lower;
     /** creates second variable of the option name
-     * in lower case and in a usable format
+    *  in lower case and in a usable format
      */
     switch(el){
         case "First Name":
@@ -52,7 +56,12 @@ for (let i = 0; i < fields.length; i++) {
             lower = el.toLowerCase();
             break;
     };
-
+    let keyText;
+    if(i<6){
+        keyText=`utm_${lower}`
+    }else{
+        keyText=`${lower}`
+    }
     const str = 
     `<div id="${lower}_wrapper" class="wrapper_inputSelect">
         <input 
@@ -74,7 +83,7 @@ for (let i = 0; i < fields.length; i++) {
                 id="input_${lower}" 
                 class="purlInput_key" 
                 placeholder="${el}" 
-                value="${lower}">
+                value="${keyText}">
             <input 
                 type="text" 
                 name="" 

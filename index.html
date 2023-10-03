@@ -14,11 +14,17 @@
         <div id="errorList"></div>
 
         <div class="confirmBtn_wrapper">
-            <button class="pd_btn-confirm" id="btn_confirm" onclick="validate()">
+            <button type="button" class="pd_btn-confirm" id="btn_confirm" onclick="validate()">
                 <span>Generate</span>
             </button>
+
+            <img 
+            id="iconButton" 
+            src="./assets/images/copy.png" 
+            onclick="(() => navigator.clipboard.writeText(document.getElementById('purl').innerText))()" 
+            alt="Copy Button">
+
         </div>
-        
 
     
     </div>

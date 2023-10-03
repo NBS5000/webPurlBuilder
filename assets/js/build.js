@@ -1,3 +1,10 @@
+/** this function validates inputs, once inputs have been validated
+ * purl string is constructed. If they are not validated, a list of 
+ * errors is returned.
+ * TODO: connection with firebase
+ * TODO: 
+ */
+
 function validate(){
     document.getElementById("purl").innerText = "";
     let errors=[];
@@ -82,6 +89,7 @@ function validate(){
         }
         str = str+`</div>`;
         document.getElementById("errorList").innerHTML = str;
+        document.getElementById("iconButton").style.display = "none";
     }else{
         document.getElementById("errorList").innerHTML = "";
         let purl_str = "";
@@ -95,5 +103,6 @@ function validate(){
             purl_str = purl_str.slice(0,-1);
         }
         document.getElementById("purl").innerText = purl_str;
+        document.getElementById("iconButton").style.display = "block";
     }
 }

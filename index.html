@@ -9,57 +9,59 @@
     <link rel="stylesheet" href="./assets/css/pdButton_confirm.css">
 </head>
 <body>
-    <div id="purlWrapper">
-        <h2 id="purl"></h2>
-        <div id="errorList"></div>
+    <div id="purlBuilderWrapper">
+        <div id="purlWrapper">
+            <h2 id="purl"></h2>
+            <div id="errorList"></div>
 
-        <div class="confirmBtn_wrapper">
-            <button type="button" class="pd_btn-confirm" id="btn_confirm" onclick="validate()">
-                <span>Generate</span>
-            </button>
+            <div class="confirmBtn_wrapper">
+                <button type="button" class="pd_btn-confirm" id="btn_confirm" onclick="validate()">
+                    <span>Generate</span>
+                </button>
 
-            <img 
-            id="iconButton" 
-            src="./assets/images/copy.png" 
-            onclick="(() => navigator.clipboard.writeText(document.getElementById('purl').innerText))()" 
-            alt="Copy Button">
+                <img 
+                id="iconButton" 
+                src="./assets/images/copy.png" 
+                onclick="(() => navigator.clipboard.writeText(document.getElementById('purl').innerText))()" 
+                alt="Copy Button">
 
+            </div>
+
+        
         </div>
-
-    
+        <form id="inputForm" action="">
+            <div class="inputFormWrapper">
+                <label 
+                    for="input_baseURL" 
+                    class="purlInput_label">Base URL</label>
+                <input 
+                    type="text" 
+                    name="" 
+                    id="input_baseURL" 
+                    class="purlInput_url" 
+                    required 
+                    data-field="Base URL"
+                    placeholder="Base URL - eg: parachutedigitalmarketing.com.au">
+                <label 
+                    for="input_path" 
+                    class="purlInput_label">Path</label>
+                <input 
+                    type="text" 
+                    name="" 
+                    id="input_path" 
+                    class="purlInput_url" 
+                    required 
+                    
+                    data-field="Path"
+                    placeholder="Path - eg: why-choose-parachute-digital/our-team">
+                <div id="utmFields_insert"></div>
+        </form>
     </div>
-    <form id="inputForm" action="">
-        <div class="inputFormWrapper">
-            <label 
-                for="input_baseURL" 
-                class="purlInput_label">Base URL</label>
-            <input 
-                type="text" 
-                name="" 
-                id="input_baseURL" 
-                class="purlInput_url" 
-                required 
-                data-field="Base URL"
-                placeholder="Base URL - eg: parachutedigitalmarketing.com.au">
-            <label 
-                for="input_path" 
-                class="purlInput_label">Path</label>
-            <input 
-                type="text" 
-                name="" 
-                id="input_path" 
-                class="purlInput_url" 
-                required 
-                
-                data-field="Path"
-                placeholder="Path - eg: why-choose-parachute-digital/our-team">
-            <div id="utmFields_insert"></div>
-    </form>
-
     <script src="./assets/js/generate.js"></script>
     <script src="./assets/js/webPurlBuilder.js"></script>
     <script src="./assets/js/addCustom.js"></script>
     <script src="./assets/js/build.js"></script>
     <script src="./assets/js/whiteSpace.js"></script>
+    <script src="./assets/js/moveInput.js"></script>
 </body>
 </html>

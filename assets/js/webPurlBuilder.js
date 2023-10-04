@@ -33,18 +33,16 @@ for (let i = 0; i < inputFields.length; i++) {
                 /** response if validation fails */
                 tick.style.display = "none";
             }else{
-                /** if successful, add tick
-                 * this will be removed if 
-                 * tests subsequently fail 
-                 * validation
-                 */
+                /** if successful, add tick this will be removed if 
+                 * tests subsequently fail validation */
                 console.log("Beep boop");
                 tick.style.display = "block";
                 /** if the utm was custom, add another custom option */
                 if(grandParent.id.includes("custom")){
-                    console.log("Who's that with you?")
                     addCustom(grandParent.id)
                 }
+
+                
             };
         };
     });
@@ -64,3 +62,4 @@ for (let i = 0; i < selectBtns.length; i++) {
         }
     });
 }
+

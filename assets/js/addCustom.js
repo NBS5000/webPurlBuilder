@@ -12,7 +12,7 @@ const rand = (function(){return Math.round(Math.random()*10000)});
  **/
 function newHtml(r,p){
     const str = 
-    `<div id="custom_${r}_wrapper" class="wrapper_inputSelect">
+    `<div id="custom_${r}_wrapper" class="wrapper_inputSelect optionalInput">
         <input 
             class="inputChk" 
             type="checkbox" 

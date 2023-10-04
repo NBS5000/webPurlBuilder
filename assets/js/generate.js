@@ -5,7 +5,8 @@
 
 /** These are the fields that will generate. To 
  * permanently add another option, add the name 
- * to the array below
+ * to the array below.
+ * ! MANDATORY FIELDS NEED TO BE FIRST
  */
 const fields = [
     "Source",
@@ -22,6 +23,8 @@ const fields = [
     "Reference",
     "Custom"
 ]
+// ! The number of mandatory fields in the array
+const mandatory = 5;
 /** builds the HTML string, starting with the wrapper, 
  * and looping through the above array to build the necessary fields.
  * ! DO NOT AMEND THIS SECTION WITHOUT COMPLETE UNDERSTANDING
@@ -29,10 +32,11 @@ const fields = [
 /*
 
 */
-let htmlStr=`<div id="utmFields">`;
+let htmlStr=`<div id="utmFields"><div id="mandatoryFields">`;
 for (let i = 0; i < fields.length; i++) {
     const el = fields[i];
     let lower;
+    const mand = i<mandatory;
     /** creates second variable of the option name
     *  in lower case and in a usable format
      */
@@ -56,23 +60,20 @@ for (let i = 0; i < fields.length; i++) {
             lower = el.toLowerCase();
             break;
     };
-    let keyText;
-    if(i<6){
-        keyText=`utm_${lower}`
-    }else{
-        keyText=`${lower}`
-    }
     const str = 
-    `<div id="${lower}_wrapper" class="wrapper_inputSelect">
+    `<div id="${lower}_wrapper" class="wrapper_inputSelect ${mand?"mandatoryInput":"optionalInput"}">
         <input 
             class="inputChk" 
             type="checkbox" 
             id='chk_${lower}'
-            data-utm="${lower}">
+            data-utm="${lower}"
+            ${mand?"checked":""}>
         <label 
-            class="chk_label" 
+            id='lblchk_${lower}'
+            class='chk_label' 
             for='chk_${lower}'
-            data-utm="${el}">
+            data-utm='${el}'
+            ${mand?"":"onclick='moveInput(this)'"}>
             ${el}<span class="chk_labelTick">✔</span>
         </label>
         <div id="inputWrapper_${lower}" class="inputWrapper">
@@ -83,7 +84,7 @@ for (let i = 0; i < fields.length; i++) {
                 id="input_${lower}" 
                 class="purlInput_key" 
                 placeholder="${el}" 
-                value="${keyText}">
+                value="${mand?`utm_`+lower:lower}">
             <input 
                 type="text" 
                 name="" 
@@ -94,7 +95,11 @@ for (let i = 0; i < fields.length; i++) {
     </div>
     `;
     htmlStr = htmlStr+str;
+    if(i===mandatory-1){
+        const split = `</div><div id="utmSplit">Optional</div><div id="optionalFields">`;
+        htmlStr = htmlStr+split;
+    }
 }
 /** finishes string and adds to page */
-htmlStr = htmlStr+`</div>`;
+htmlStr = htmlStr+`</div></div>`;
 document.getElementById("utmFields_insert").innerHTML = htmlStr;

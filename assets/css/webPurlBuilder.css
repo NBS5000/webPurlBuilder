@@ -45,11 +45,11 @@ body{
 }
 .purlInput_key{
     width:15%;
-    min-width: 90px;
+    min-width: 80px;
 }
 .purlInput_value{
-    width: 78%;
-    min-width: 180px;
+    width: 75%;
+    min-width: 150px;
 }
 .purlInput_label{
     display: none;
@@ -60,7 +60,7 @@ body{
     font-style: italic;
 }
 .wrapper_inputSelect{
-    display: flex;
+    display: flex !important;
     flex-wrap: nowrap;
     justify-content: space-between;
     width: 100%;
@@ -70,9 +70,9 @@ body{
 .inputWrapper{
     opacity:0;
     transition-duration: 0.5s;
-    width: 80%;
+    width: 75%;
     height:100%;
-    display: flex;
+    display:none;
     justify-content: space-between;
     align-items: center;
     visibility: hidden;
@@ -159,4 +159,30 @@ body{
     width: 45px;
     margin-left: 20px;
     display: none;
+}
+
+#mandatoryFields{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#optionalFields{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+#optionalFields .wrapper_inputSelect .chk_label{
+    width: 100%;
+    /*min-width: min-content;
+    max-width: max-content;*/
+}
+#optionalFields .wrapper_inputSelect{
+    width: 20%;
+    margin-right: 5%;
+}
+
+#mandatoryFields .inputWrapper{
+    display: flex !important;
 }

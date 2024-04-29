@@ -8,6 +8,9 @@
  * to the array below.
  * ! MANDATORY FIELDS NEED TO BE FIRST
  */
+
+
+
 const fields = [
     "Source",
     "Medium",
@@ -23,15 +26,13 @@ const fields = [
     "Reference",
     "Custom"
 ]
-// ! The number of mandatory fields in the array
+// The number of mandatory fields in the array
 const mandatory = 5;
+
 /** builds the HTML string, starting with the wrapper, 
  * and looping through the above array to build the necessary fields.
  * ! DO NOT AMEND THIS SECTION WITHOUT COMPLETE UNDERSTANDING
  */
-/*
-
-*/
 let htmlStr=`<div id="utmFields"><div id="mandatoryFields">`;
 for (let i = 0; i < fields.length; i++) {
     const el = fields[i];
@@ -96,7 +97,7 @@ for (let i = 0; i < fields.length; i++) {
     `;
     htmlStr = htmlStr+str;
     if(i===mandatory-1){
-        const split = `</div><div id="utmSplit">Optional</div><div id="optionalFields">`;
+        const split = `</div><div id="utmSplit">Optional Values</div><div id="optionalFields">`;
         htmlStr = htmlStr+split;
     }
 }

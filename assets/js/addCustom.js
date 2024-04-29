@@ -1,6 +1,6 @@
 /** 
- * TODO: Add whitespace checker and handling
  * TODO: add remove new custom when unchecked if there is a another not empty
+ * TODO: have new custom button appear in optional section
  */
 
 /** @random creates random value for use on multiple custom fields */
@@ -51,7 +51,11 @@ function addCustom(prevId){
     const parent = prev.parentElement;
     const str = newHtml(r,prevId);
     /** adds the new HTML section to the DOM next to the clicked element*/
-    parent.insertAdjacentHTML( 'beforeend', str );
+    const optList = document.querySelectorAll("div.optionalInput:not(.mandatoryInput)");
+    const optLength = optList.length;
+    const lastOpt = optList[optLength-1];
+
+    lastOpt.insertAdjacentHTML( 'afterend', str );
     /** gets the new elements that have just been inserted */
     const newSection = document.getElementById(`chk_custom_${r}`);
     const newInput = document.getElementById(`input_custom_${r}_value`);

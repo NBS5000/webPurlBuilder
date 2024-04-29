@@ -2,10 +2,11 @@
  * purl string is constructed. If they are not validated, a list of 
  * errors is returned.
  * TODO: connection with firebase
- * TODO: 
  */
 
-function validate(){
+
+
+function buildPurl(){
     document.getElementById("purl").innerText = "";
     let errors=[];
     let values=[""];
@@ -18,9 +19,6 @@ function validate(){
         const f = el.dataset.field;
         if(!v){
             err = `The ${f} is missing`;
-            errors.push(err);
-        }else if(v && whitespace(v)){
-            err = `There is whitespace in the ${f} field`;
             errors.push(err);
         }else{
             const len = v.length;
@@ -64,17 +62,11 @@ function validate(){
             }else if(!val.value){
                 err = `The Value for '${pdField}' is missing`;
                 x = true;
-            }else if(key.value && whitespace(key.value)){
-                err = `There is whitespace in the Key for '${pdField}'`;
-                x = true;
-            }else if(val.value && whitespace(val.value)){
-                err = `There is whitespace in the Value for '${pdField}'`;
-                x = true;
             }
             if(x){
                 errors.push(err);
             }else{
-                const str = `${key.value}=${val.value}&`;
+                const str = `${encodeURIComponent(key.value)}=${encodeURIComponent(val.value)}&`;
                 values.push(str);
             }
         }
@@ -104,5 +96,17 @@ function validate(){
         }
         document.getElementById("purl").innerText = purl_str;
         document.getElementById("iconButton").style.display = "block";
+    }
+}
+
+
+function validate(){
+    const test = document.getElementById("clientSelect").value;
+    console.log("Test: ", test, " - ", typeof test)
+    if(test==="false"){
+        alert("Please select the client");
+        console.log("Please select the client");
+    }else{
+        buildPurl();
     }
 }

@@ -8,7 +8,6 @@ const selectBtns = document.getElementsByClassName("inputChk");
 for (let i = 0; i < inputFields.length; i++) {
     const el = inputFields[i];
     el.addEventListener("blur",(event)=>{
-        console.log("Hello there")
         const parent = event.target.parentElement;
         const grandParent = document.getElementById(parent.id).parentElement;
         const chkLabel = document.querySelector("#"+grandParent.id + " > .chk_label");
@@ -18,9 +17,10 @@ for (let i = 0; i < inputFields.length; i++) {
         const tick = document.querySelector("#"+grandParent.id + " > .chk_label > .chk_labelTick");
         /** check if section has been selected first */
         if(chkBox.checked){
-            console.log("Is that you Artoo?")
             const keyVal = inputKey.value;
             const valVal = inputVal.value;
+            const urlKey = encodeURIComponent(keyVal);
+            const urlVal = encodeURIComponent(valVal);
             /** run validation */
             const rgx = /\s/;
             /** make sure there is content */
@@ -35,14 +35,11 @@ for (let i = 0; i < inputFields.length; i++) {
             }else{
                 /** if successful, add tick this will be removed if 
                  * tests subsequently fail validation */
-                console.log("Beep boop");
                 tick.style.display = "block";
                 /** if the utm was custom, add another custom option */
                 if(grandParent.id.includes("custom")){
                     addCustom(grandParent.id)
                 }
-
-                
             };
         };
     });
@@ -62,4 +59,3 @@ for (let i = 0; i < selectBtns.length; i++) {
         }
     });
 }
-

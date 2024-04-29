@@ -149,6 +149,12 @@ body{
     font-size: 0.9em;
 }
 
+#utmSplit{
+    color: blue;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
 /********************************/
 .confirmBtn_wrapper{
     display: flex;
@@ -186,3 +192,19 @@ body{
 #mandatoryFields .inputWrapper{
     display: flex !important;
 }
+
+/***************/
+/* ! Client select */
+#clientSelect{
+    height: 50px;
+    font-size: 1.5rem;
+    width: max-content;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+#clientSelect:first-child{
+    font-size: 1rem !important;
+    color: rgb(100, 100, 100) !important;
+}
+
+/***************/
